@@ -14,16 +14,174 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      popup_messages: {
+        Row: {
+          avatar_url: string | null
+          body: string
+          created_at: string
+          id: string
+          is_active: boolean
+          link_label: string | null
+          link_url: string | null
+          sender_name: string
+          target_session_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          body: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          link_label?: string | null
+          link_url?: string | null
+          sender_name?: string
+          target_session_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          body?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          link_label?: string | null
+          link_url?: string | null
+          sender_name?: string
+          target_session_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      videos: {
+        Row: {
+          category: string
+          created_at: string
+          creator: string | null
+          description: string | null
+          duration: string | null
+          id: string
+          is_featured: boolean
+          is_published: boolean
+          sort_order: number
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          video_url: string
+          view_count: number
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          creator?: string | null
+          description?: string | null
+          duration?: string | null
+          id?: string
+          is_featured?: boolean
+          is_published?: boolean
+          sort_order?: number
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+          video_url: string
+          view_count?: number
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          creator?: string | null
+          description?: string | null
+          duration?: string | null
+          id?: string
+          is_featured?: boolean
+          is_published?: boolean
+          sort_order?: number
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          video_url?: string
+          view_count?: number
+        }
+        Relationships: []
+      }
+      visitors: {
+        Row: {
+          current_path: string | null
+          current_video_title: string | null
+          first_seen: string
+          id: string
+          label: string | null
+          last_seen: string
+          page_views: number
+          referrer: string | null
+          screen: string | null
+          session_id: string
+          user_agent: string | null
+        }
+        Insert: {
+          current_path?: string | null
+          current_video_title?: string | null
+          first_seen?: string
+          id?: string
+          label?: string | null
+          last_seen?: string
+          page_views?: number
+          referrer?: string | null
+          screen?: string | null
+          session_id: string
+          user_agent?: string | null
+        }
+        Update: {
+          current_path?: string | null
+          current_video_title?: string | null
+          first_seen?: string
+          id?: string
+          label?: string | null
+          last_seen?: string
+          page_views?: number
+          referrer?: string | null
+          screen?: string | null
+          session_id?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +308,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin"],
+    },
   },
 } as const
