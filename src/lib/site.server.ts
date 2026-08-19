@@ -60,10 +60,10 @@ export async function fetchPublicVideos(): Promise<PublicVideo[]> {
 export async function upsertVisitor(input: {
   sessionId: string;
   path: string;
-  videoTitle?: string | null;
-  userAgent?: string | null;
-  referrer?: string | null;
-  screen?: string | null;
+  videoTitle?: string | null | undefined;
+  userAgent?: string | null | undefined;
+  referrer?: string | null | undefined;
+  screen?: string | null | undefined;
 }) {
   const { data: existing } = await supabaseAdmin
     .from("visitors")
