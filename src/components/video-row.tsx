@@ -1,6 +1,7 @@
 import { Play, Eye } from "lucide-react";
 
 export type VideoItem = {
+  id?: string;
   title: string;
   creator: string;
   views: string;
@@ -9,9 +10,12 @@ export type VideoItem = {
   tag?: string;
 };
 
-function VideoCard({ item }: { item: VideoItem }) {
+function VideoCard({ item, onSelect }: { item: VideoItem; onSelect?: () => void }) {
   return (
-    <article className="group w-[46vw] shrink-0 sm:w-52 md:w-56">
+    <article
+      onClick={onSelect}
+      className={`group w-[46vw] shrink-0 sm:w-52 md:w-56 ${onSelect ? "cursor-pointer" : ""}`}
+    >
       <div className="relative aspect-[2/3] overflow-hidden rounded-xl bg-card ring-1 ring-border transition-all duration-300 group-hover:-translate-y-1 group-hover:ring-primary/60 group-hover:glow-shadow">
         <img
           src={item.image}
