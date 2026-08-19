@@ -322,10 +322,9 @@ function VideoList({ videos, onDone }: { videos: VideoRow[]; onDone: () => Promi
   };
 
   const toggle = async (v: VideoRow, field: "is_published" | "is_featured") => {
-    await supabase
-      .from("videos")
-      .update({ [field]: !v[field] })
-      .eq("id", v.id);
+    const patch =
+      field === "is_published" ? { is_published: !v.is_published } : { is_featured: !v.is_featured };
+    await supabase.from("videos").update(patch).eq("id", v.id);
     await onDone();
   };
 
