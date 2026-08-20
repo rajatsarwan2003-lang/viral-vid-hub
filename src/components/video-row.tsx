@@ -10,10 +10,10 @@ export type VideoItem = {
   tag?: string;
 };
 
-function VideoCard({ item, onSelect }: { item: VideoItem; onSelect?: () => void }) {
+function VideoCard({ item, onSelect }: { item: VideoItem; onSelect?: (id: string) => void }) {
   return (
     <article
-      onClick={onSelect}
+      onClick={() => onSelect?.(item.id)}
       className={`group w-[46vw] shrink-0 sm:w-52 md:w-56 ${onSelect ? "cursor-pointer" : ""}`}
     >
       <div className="relative aspect-[2/3] overflow-hidden rounded-xl bg-card ring-1 ring-border transition-all duration-300 group-hover:-translate-y-1 group-hover:ring-primary/60 group-hover:glow-shadow">
@@ -54,14 +54,22 @@ function VideoCard({ item, onSelect }: { item: VideoItem; onSelect?: () => void 
   );
 }
 
-export function VideoRow({ title, items }: { title: string; items: VideoItem[] }) {
+export function VideoRow({
+  title,
+  items,
+  onSelect,
+}: {
+  title: string;
+  items: VideoItem[];
+  onSelect?: (id: string) => void;
+}) {
   return (
     <section className="mt-10">
       <h2 className="mb-4 px-4 text-lg sm:px-6 sm:text-xl">{title}</h2>
       <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:gap-4 sm:px-6">
         {items.map((item) => (
-          <div key={item.title} className="snap-start">
-            <VideoCard item={item} />
+          <div key={item.id} className="snap-start">
+            <VideoCard item={item} onSelect={onSelect} />
           </div>
         ))}
       </div>
