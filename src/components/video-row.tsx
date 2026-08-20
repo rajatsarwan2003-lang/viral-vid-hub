@@ -11,12 +11,23 @@ export type VideoItem = {
 };
 
 function VideoCard({ item, onSelect }: { item: VideoItem; onSelect?: ((id: string) => void) | undefined }) {
+  const select = () => onSelect?.(item.id);
   return (
     <article
-      onClick={() => onSelect?.(item.id)}
-      className={`group w-[46vw] shrink-0 sm:w-52 md:w-56 ${onSelect ? "cursor-pointer" : ""}`}
+      role={onSelect ? "button" : undefined}
+      tabIndex={onSelect ? 0 : undefined}
+      onClick={select}
+      onPointerUp={select}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          select();
+        }
+      }}
+      className={`group w-[46vw] shrink-0 touch-manipulation sm:w-52 md:w-56 ${onSelect ? "cursor-pointer" : ""}`}
     >
       <div className="relative aspect-[2/3] overflow-hidden rounded-xl bg-card ring-1 ring-border transition-all duration-300 group-hover:-translate-y-1 group-hover:ring-primary/60 group-hover:glow-shadow">
+
         <img
           src={item.image}
           alt={item.title}
