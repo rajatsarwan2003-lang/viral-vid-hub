@@ -1,7 +1,7 @@
 import { Play, Eye } from "lucide-react";
 
 export type VideoItem = {
-  id?: string;
+  id: string;
   title: string;
   creator: string;
   views: string;
