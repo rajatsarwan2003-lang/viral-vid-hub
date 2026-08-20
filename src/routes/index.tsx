@@ -231,8 +231,17 @@ function Index() {
                 controls
                 autoPlay
                 playsInline
+                preload="auto"
+                onCanPlay={(e) => {
+                  const el = e.currentTarget;
+                  void el.play().catch(() => {
+                    el.muted = true;
+                    void el.play();
+                  });
+                }}
                 className="w-full rounded-xl bg-black"
               />
+
             ) : (
               <p className="rounded-xl border bg-card p-6 text-center text-sm text-muted-foreground">
                 Is clip ki video file abhi upload nahi hui hai.
