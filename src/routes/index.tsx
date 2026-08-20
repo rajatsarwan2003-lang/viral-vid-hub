@@ -55,12 +55,12 @@ export const Route = createFileRoute("/")({
 });
 
 const demoTrending: VideoItem[] = [
-  { title: "Bollywood Song Dance Video", creator: "Rajat Sarwan", views: "2.4M", duration: "0:48", image: thumb1, tag: "#1 Trending" },
-  { title: "Street Comedy Gone Wrong", creator: "DesiHasi", views: "1.8M", duration: "1:12", image: thumb2, tag: "Hot" },
-  { title: "Midnight Bike Stunt Reel", creator: "RiderRaj", views: "3.1M", duration: "0:36", image: thumb3 },
-  { title: "Flame Fried Noodles ASMR", creator: "StreetBites", views: "980K", duration: "2:05", image: thumb4 },
-  { title: "Live Concert Crowd Goes Wild", creator: "SoundStage", views: "1.2M", duration: "1:44", image: thumb5 },
-  { title: "Last Ball Six — Full Clip", creator: "CricDaily", views: "4.6M", duration: "0:29", image: thumb6, tag: "Viral" },
+  { id: "demo-1", title: "Bollywood Song Dance Video", creator: "Rajat Sarwan", views: "2.4M", duration: "0:48", image: thumb1, tag: "#1 Trending" },
+  { id: "demo-2", title: "Street Comedy Gone Wrong", creator: "DesiHasi", views: "1.8M", duration: "1:12", image: thumb2, tag: "Hot" },
+  { id: "demo-3", title: "Midnight Bike Stunt Reel", creator: "RiderRaj", views: "3.1M", duration: "0:36", image: thumb3 },
+  { id: "demo-4", title: "Flame Fried Noodles ASMR", creator: "StreetBites", views: "980K", duration: "2:05", image: thumb4 },
+  { id: "demo-5", title: "Live Concert Crowd Goes Wild", creator: "SoundStage", views: "1.2M", duration: "1:44", image: thumb5 },
+  { id: "demo-6", title: "Last Ball Six — Full Clip", creator: "CricDaily", views: "4.6M", duration: "0:29", image: thumb6, tag: "Viral" },
 ];
 
 const fallbackThumbs = [thumb1, thumb2, thumb3, thumb4, thumb5, thumb6];
