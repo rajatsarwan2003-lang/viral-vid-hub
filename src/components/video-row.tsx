@@ -10,7 +10,7 @@ export type VideoItem = {
   tag?: string;
 };
 
-function VideoCard({ item, onSelect }: { item: VideoItem; onSelect?: (id: string) => void }) {
+function VideoCard({ item, onSelect }: { item: VideoItem; onSelect?: ((id: string) => void) | undefined }) {
   return (
     <article
       onClick={() => onSelect?.(item.id)}
