@@ -214,7 +214,7 @@ function Index() {
         </div>
       </footer>
 
-      {playing?.videoUrl && (
+      {playing && (
         <div className="fixed inset-0 z-60 flex items-center justify-center bg-background/95 p-4">
           <button
             onClick={() => setPlaying(null)}
@@ -224,17 +224,34 @@ function Index() {
             <X className="size-5" />
           </button>
           <div className="w-full max-w-3xl">
-            <video
-              src={playing.videoUrl}
-              controls
-              autoPlay
-              playsInline
-              className="w-full rounded-xl bg-black"
-            />
+            {playing.videoUrl ? (
+              <video
+                key={playing.id}
+                src={playing.videoUrl}
+                controls
+                autoPlay
+                playsInline
+                preload="auto"
+                onCanPlay={(e) => {
+                  const el = e.currentTarget;
+                  void el.play().catch(() => {
+                    el.muted = true;
+                    void el.play();
+                  });
+                }}
+                className="w-full rounded-xl bg-black"
+              />
+
+            ) : (
+              <p className="rounded-xl border bg-card p-6 text-center text-sm text-muted-foreground">
+                Is clip ki video file abhi upload nahi hui hai.
+              </p>
+            )}
             <p className="mt-3 text-sm text-foreground">{playing.title}</p>
           </div>
         </div>
       )}
+
 
       <MessagePopup messages={messages} />
     </div>
